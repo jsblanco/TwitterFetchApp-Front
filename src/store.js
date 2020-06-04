@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { all } from "redux-saga/effects";
-import tweetsSaga from "./redux-components/saga";
-import reducers from "./redux-components/reducers";
+import tweetsSaga from "./Redux/saga";
+import reducers from "./Redux/reducers";
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -14,12 +14,19 @@ export default (state = initialState, { type, payload }) => {
         loading: true,
       };
     case constants.GET_TWEETS_SUCCESS:
-      let newList = [...state.tweetList, payload];
+      let newList = payload;
       return {
         ...state,
         loading: false,
         tweetList: newList,
       };
+
+      case constants.GET_TWEET_USERS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          users: payload,
+        };
     case constants.GET_TWEETS_FAIL:
       return {
         ...state,

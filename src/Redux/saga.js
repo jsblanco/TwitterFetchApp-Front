@@ -1,17 +1,21 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import * as constants from "./constants";
-import getTweets from "../utils/getTweets";
+import { getTweets, getTweetUsers } from "../utils/server-queries";
+import { extractUsers } from "./helpers"
 import {
   getTweetsRequest,
   getTweetsSuccess,
   getTweetsFail,
+  addUserInfoToTweets
 } from "./actions";
 
-function* getTweetsEffect({criteria}) {
+function* getTweetsEffect() {
     try {
       yield call(getTweetsRequest)
-      const  tweet  = yield call(getTweets(criteria));
-      yield put(getTweetsSuccess(tweet));
+      const  tweets  = yield call(getTweets);
+      yield put(getTweetsSuccess(tweets));
+      //const tweetUsers = yield call(getTweetUsers(extractUsers(tweets)))
+      //yield put(addUserInfoToTweets(tweets))
     } catch (e) {
       console.error(e);
       yield put(getTweetsFail(e));
