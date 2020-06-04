@@ -9,13 +9,12 @@ import {
   addUserInfoToTweets
 } from "./actions";
 
-function* getTweetsEffect() {
+function* getTweetsEffect({payload}) {
     try {
+      console.log(payload)
       yield call(getTweetsRequest)
-      const  tweets  = yield call(getTweets);
+      const  tweets  = yield call(getTweets, payload);
       yield put(getTweetsSuccess(tweets));
-      //const tweetUsers = yield call(getTweetUsers(extractUsers(tweets)))
-      //yield put(addUserInfoToTweets(tweets))
     } catch (e) {
       console.error(e);
       yield put(getTweetsFail(e));

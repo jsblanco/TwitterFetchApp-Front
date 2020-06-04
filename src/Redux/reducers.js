@@ -3,6 +3,7 @@ const initialState = {
   tweetList: [],
   loading: false,
   error: "",
+  screen_name: "jack",
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -20,13 +21,6 @@ export default (state = initialState, { type, payload }) => {
         loading: false,
         tweetList: newList,
       };
-
-      case constants.GET_TWEET_USERS_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          users: payload,
-        };
     case constants.GET_TWEETS_FAIL:
       return {
         ...state,
@@ -38,7 +32,11 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         tweetList: [],
       };
-
+      case constants.CHANGE_SCREEN_NAME:
+        return {
+          ...state,
+          screen_name: payload
+        }
     default:
       return state;
   }

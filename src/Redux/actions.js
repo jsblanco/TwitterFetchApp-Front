@@ -1,28 +1,27 @@
 import * as constants from "./constants";
 
-export const getTweetsRequest = () => ({
+export const getTweetsRequest = (payload) => ({
   type: constants.GET_TWEETS_REQUEST,
+  payload
 });
 
 export const getTweetsSuccess = (payload) => ({
   type: constants.GET_TWEETS_SUCCESS,
-  payload
+  payload,
 });
 
 export const getTweetsFail = (payload) => ({
   type: constants.GET_TWEETS_FAIL,
-  payload
+  payload,
 });
 
 export const clearTweetList = () => ({
   type: constants.CLEAR_TWEET_LIST,
 });
 
-export const addUserInfoToTweets = (payload) => ({
-  type: constants.GET_TWEET_USERS_SUCCESS,
-  payload
+export const changeScreenName = (payload) => ({
+  type: constants.CHANGE_SCREEN_NAME,
+  payload,
 });
-
-
 
 //constants.GET_TWEET_USERS_FAIL
