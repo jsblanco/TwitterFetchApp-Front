@@ -1,19 +1,19 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import * as constants from "./constants";
-import { getTweets, getTweetUsers } from "../utils/server-queries";
+import { getTweetsByUsername, getTweetsByKeyword } from "../utils/server-queries";
 import { extractUsers } from "./helpers"
 import {
-  getTweetsRequest,
+  getUserTweetsRequest,
   getTweetsSuccess,
   getTweetsFail,
   addUserInfoToTweets
 } from "./actions";
 
-function* getTweetsEffect({payload}) {
+function* getTweetsByUsernameEffect({payload}) {
     try {
       console.log(payload)
-      yield call(getTweetsRequest)
-      const  tweets  = yield call(getTweets, payload);
+      yield call(getUserTweetsRequest)
+      const  tweets  = yield call(getTweetsByUsername, payload);
       yield put(getTweetsSuccess(tweets));
     } catch (e) {
       console.error(e);
@@ -21,9 +21,25 @@ function* getTweetsEffect({payload}) {
     }
   }
 
+  function* getTweetsByKeywordEffect({payload}) {
+    try {
+      console.log(payload)
+      yield call(getUserTweetsRequest)
+      const  tweets  = yield call(getTweetsByKeyword, payload);
+      yield put(getTweetsSuccess(tweets.statuses));
+    } catch (e) {
+      console.error(e);
+      yield put(getTweetsFail(e));
+    }
+  }
+
+
+
+
 
 function* tweetSagas() {
-yield takeLatest(constants.GET_TWEETS_REQUEST, getTweetsEffect);
+yield takeLatest(constants.GET_TWEETS_USERNAME_REQUEST, getTweetsByUsernameEffect);
+yield takeLatest(constants.GET_TWEETS_KEYWORD_REQUEST, getTweetsByKeywordEffect);
 }
 export default tweetSagas;
 

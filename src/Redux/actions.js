@@ -1,7 +1,12 @@
 import * as constants from "./constants";
 
-export const getTweetsRequest = (payload) => ({
-  type: constants.GET_TWEETS_REQUEST,
+export const getUserTweetsRequest = (payload) => ({
+  type: constants.GET_TWEETS_USERNAME_REQUEST,
+  payload
+});
+
+export const getKeywordTweetsRequest = (payload) => ({
+  type: constants.GET_TWEETS_KEYWORD_REQUEST,
   payload
 });
 
@@ -19,8 +24,8 @@ export const clearTweetList = () => ({
   type: constants.CLEAR_TWEET_LIST,
 });
 
-export const changeScreenName = (payload) => ({
-  type: constants.CHANGE_SCREEN_NAME,
+export const changeSearchCriteria = (payload) => ({
+  type: constants.CHANGE_SEARCH_CRITERIA,
   payload,
 });
 

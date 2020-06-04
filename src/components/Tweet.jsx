@@ -6,17 +6,22 @@ import { faRetweet, faHeart } from "@fortawesome/free-solid-svg-icons";
 export default function Tweet({ tweet }) {
   return (
     <Col
-      lg="3"
+      lg="12"
+      xl="3"
       variant="lg-3"
-      className="m-3 pt-3 pb-1 border rounded shadow d-flex flex-column justify-content-between"
+      className="my-3 mx-2 pt-3 pb-1 border rounded shadow d-flex flex-column justify-content-between"
     >
-      <Row className="px-3 py-1">
-        <Col lg="3" className="text-center">
+      <Row className="pr-3 pl-1 py-1">
+        <Col xl="3" className="text-center align-content-center">
           <img src={tweet.user.profile_image_url} className="rounded-circle" />
-          <p>{tweet.user.name}</p>
+          <p
+          className="m-0">{tweet.user.name}</p>
+          <p
+          className="font-italic text-muted m-0"
+          >{tweet.user.screen_name}</p>
         </Col>
 
-        <Col lg="9">
+        <Col lg="12" xl="9">
           <p className="text-secondary">{tweet.text}</p>
         </Col>
       </Row>

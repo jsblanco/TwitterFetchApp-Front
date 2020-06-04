@@ -1,11 +1,11 @@
 import {axiosInstance} from "./api";
 
 
-  export const getTweets = (data) => {
+  export const getTweetsByUsername = (data) => {
     return axiosInstance.post("/get-user-tweets", {"screen_name": data})
   }
 
 
-  export const getOtherTweets = (data)=> {
-    return axiosInstance.post("/get-user-tweets", data)
+  export const getTweetsByKeyword = (data)=> {
+    return axiosInstance.post("/get-tweets-by-keyword", {"q": data})
   }

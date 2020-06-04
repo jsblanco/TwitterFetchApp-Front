@@ -4,11 +4,12 @@ const initialState = {
   loading: false,
   error: "",
   screen_name: "jack",
+  q: "angular",
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case constants.GET_TWEETS_REQUEST:
+    case constants.GET_TWEETS_USERNAME_REQUEST: case constants.GET_TWEETS_KEYWORD_REQUEST:
       if (!!state.tweetList) return { ...state };
       return {
         ...state,
@@ -32,10 +33,11 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         tweetList: [],
       };
-      case constants.CHANGE_SCREEN_NAME:
-        return {
+      case constants.CHANGE_SEARCH_CRITERIA:
+      const {name, value}= payload  
+      return {
           ...state,
-          screen_name: payload
+          [name]: value
         }
     default:
       return state;
