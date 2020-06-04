@@ -20,6 +20,11 @@ export const getTweetsFail = (payload) => ({
   payload,
 });
 
+export const toggleSearchType = (payload) => ({
+  type: constants.TOGGLE_SEARCH,
+  payload
+});
+
 export const clearTweetList = () => ({
   type: constants.CLEAR_TWEET_LIST,
 });

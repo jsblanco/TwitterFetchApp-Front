@@ -9,21 +9,16 @@ export default function Tweet({ tweet }) {
       lg="12"
       xl="3"
       variant="lg-3"
-      className="my-3 mx-2 pt-3 pb-1 border rounded shadow d-flex flex-column justify-content-between"
+      className="my-3 mx-2 pt-3 pb-1 border rounded-lg shadow d-flex flex-column justify-content-between"
     >
-      <Row className="pr-3 pl-1 py-1">
-        <Col xl="3" className="text-center align-content-center">
-          <img src={tweet.user.profile_image_url} className="rounded-circle" />
-          <p
-          className="m-0">{tweet.user.name}</p>
-          <p
-          className="font-italic text-muted m-0"
-          >{tweet.user.screen_name}</p>
-        </Col>
+      <Row className="px-3 pl-1 py-1 align-items-center">
+          <img src={tweet.user.profile_image_url} className="rounded-circle mr-1" />
+          <p className="d-inline my-0 mx-1 font-weight-bold">{tweet.user.name}</p>
+          <p className="font-italic text-muted my-0 mx-1 d-inline">@{tweet.user.screen_name}</p>
+      </Row>
 
-        <Col lg="12" xl="9">
+      <Row className="px-3 pl-1 py-1">
           <p className="text-secondary">{tweet.text}</p>
-        </Col>
       </Row>
       <Row className="px-3 pt-1">
         <Col>

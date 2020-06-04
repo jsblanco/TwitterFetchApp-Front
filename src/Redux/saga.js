@@ -6,12 +6,10 @@ import {
   getUserTweetsRequest,
   getTweetsSuccess,
   getTweetsFail,
-  addUserInfoToTweets
 } from "./actions";
 
 function* getTweetsByUsernameEffect({payload}) {
     try {
-      console.log(payload)
       yield call(getUserTweetsRequest)
       const  tweets  = yield call(getTweetsByUsername, payload);
       yield put(getTweetsSuccess(tweets));
@@ -23,7 +21,6 @@ function* getTweetsByUsernameEffect({payload}) {
 
   function* getTweetsByKeywordEffect({payload}) {
     try {
-      console.log(payload)
       yield call(getUserTweetsRequest)
       const  tweets  = yield call(getTweetsByKeyword, payload);
       yield put(getTweetsSuccess(tweets.statuses));
